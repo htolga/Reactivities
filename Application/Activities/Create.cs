@@ -17,7 +17,7 @@ namespace Application.Activities
             public string Category { get; set; }
             public DateTime Date { get; set; }
             public string City { get; set; }
-          public string Venue { get; set; }
+            public string Venue { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
