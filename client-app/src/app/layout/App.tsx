@@ -21,15 +21,36 @@ const App : React.FC<RouteComponentProps> = ({location}) => {
   if (activityStore.loadingInitial) return <LoadingComponent content='Loading Activities...' />
 
   return (
+    // <Fragment>
+    //   <NavBar />
+    //   <Container style={{ marginTop: '7em' }}>
+    //     <Route exact path='/' component={HomePage}  />
+    //     <Route  path='/activities/:id' component={ActivityDetails}  />
+    //     <Route key= {location.key}  path={['/createActivity','/manage/:id']} component={ActivityForm}  />
+    //     <Route exact path='/activities' component={ActivityDashboard}  />
+    //   </Container>
+    // </Fragment>
+
     <Fragment>
-      <NavBar />
-      <Container style={{ marginTop: '7em' }}>
-        <Route exact path='/' component={HomePage}  />
-        <Route  path='/activities/:id' component={ActivityDetails}  />
-        <Route key= {location.key}  path={['/createActivity','/manage/:id']} component={ActivityForm}  />
-        <Route exact path='/activities' component={ActivityDashboard}  />
-      </Container>
-    </Fragment>
+    <Route exact path='/' component={HomePage} />
+    <Route
+      path={'/(.+)'}
+      render={() => (
+        <Fragment>
+          <NavBar />
+          <Container style={{ marginTop: '7em' }}>
+            <Route exact path='/activities' component={ActivityDashboard} />
+            <Route path='/activities/:id' component={ActivityDetails} />
+            <Route
+              key={location.key}
+              path={['/createActivity', '/manage/:id']}
+              component={ActivityForm}
+            />
+          </Container>
+        </Fragment>
+      )}
+    />
+  </Fragment>
   );
 };
 export default withRouter(observer(App));
