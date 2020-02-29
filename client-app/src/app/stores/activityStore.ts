@@ -15,7 +15,6 @@ class ActivityStore {
   @observable target = "";
 
   @computed get activitiesByDate() {
-    console.log(this.groupActivitiesByDate(Array.from(this.activityRegistry.values())))
     return this.groupActivitiesByDate(Array.from(this.activityRegistry.values()))
   }
 
