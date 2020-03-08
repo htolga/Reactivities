@@ -2,11 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-widgets/dist/css/react-widgets.css';
 import {createBrowserHistory} from 'history';
 import './app/layout/styles.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
 import ScrollToTop from './app/layout/ScrollToTop';
+// Alttaki import için typing custom klasörü oluşturup declarasyon yazdım.
+import dateFnsLocalizer from 'react-widgets-date-fns';
+import enGB from 'date-fns/locale/en-GB'
+import de from 'date-fns/locale/de'
+import "react-datepicker/dist/react-datepicker.css";
+
+
+
+
+dateFnsLocalizer({ locales: { 'en-GB': enGB, 'de': de } })
 
 export const history = createBrowserHistory();
 
@@ -16,7 +27,8 @@ ReactDOM.render(
         <App />    
     </ScrollToTop>
     </Router>,
-     document.getElementById('root'));
+     document.getElementById('root') 
+     );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
